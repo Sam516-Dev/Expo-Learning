@@ -1,23 +1,21 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
-import ImageViewer from "./Components/ImageViewer";
-import Button from "./Components/Button";
+import { StyleSheet, Text, View } from "react-native";
+import ImageViewer from "./Components/ImageViewer"; // Make sure ImageViewer exists
+import Button from "./Components/Button"; // Make sure Button exists
 const arsenal_pic = require("./assets/arsenal.jpg");
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.Text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        {/* Your text here */}
       </Text>
       <View style={styles.imageContainer}>
         <ImageViewer arsenal_pic={arsenal_pic} />
       </View>
       <View style={styles.footerContainer}>
-        <Button label="Choose a photo" />
+        <Button label="Choose a photo here!"  />
         <Button label="Use this photo" />
       </View>
       <StatusBar style="auto" />

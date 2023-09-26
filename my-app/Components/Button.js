@@ -1,18 +1,40 @@
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+
+
+const [selectedImage, setSelectedImage] = useState(null);
+
+
 export default function Button({ label }) {
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      console.log(result);
+      setSelectedImage(result.assets[0].uri);
+    } else {
+      alert("You did not select any image.");
+    }
+  };
+
   return (
     <View style={styles.buttonContainer}>
       <Pressable
         style={styles.button}
-        onPress={() => alert("You pressed a button.")}
+        // onPress={() => alert("You pressed a button.")}
+        onPress={pickImageAsync}
       >
         <FontAwesome
-            name="picture-o"
-            size={18}
-            color="#25292e"
-            style={styles.buttonIcon}
-          />
+          name="picture-o"
+          size={18}
+          color="#25292e"
+          style={styles.buttonIcon}
+        />
         <Text style={styles.buttonLabel}>{label}</Text>
       </Pressable>
     </View>
